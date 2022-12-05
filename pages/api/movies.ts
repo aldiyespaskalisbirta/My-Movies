@@ -16,7 +16,6 @@ export default async function handler(
   res: NextApiResponse<Movies>
 ) {
   const { page, search } = req.query; // Grab search params
-
   const endpoint: string = search
     ? `${SEARCH_BASE_URL}${search}&page=${page}`
     : `${POPULAR_BASE_URL}&page=${page}`;

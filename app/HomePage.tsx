@@ -11,6 +11,7 @@ import Navbar from "../components/server/Navbar/Navbar";
 import Hero from "../components/server/Hero/Hero";
 import { BACKDROP_SIZE, IMAGE_BASE_URL, POSTER_SIZE } from "../config";
 import Card from "../components/server/Card/Card";
+import Grid from "../components/server/Grid/Grid";
 
 const HomePage = () => {
   const [query, setQuery] = React.useState("");
@@ -28,7 +29,7 @@ const HomePage = () => {
   console.log(data);
   return (
     <main
-      className="main-element relative h-screen overflow-y-scroll"
+      className="main-element relative h-screen overflow-y-scroll pb-10"
       onScroll={handleScroll}
     >
       <Navbar setQuery={setQuery} />
@@ -44,8 +45,15 @@ const HomePage = () => {
           text={data.pages[0].results[0].overview}
         />
       ) : null}
-      <div className="container">
-        <div className="card grid grid-cols-5 gap-x-4 gap-y-6 items-center mx-5 -mt-5">
+      <div className="container mb-10">
+        <Grid
+          className="card grid grid-cols-4 gap-x-4 gap-y-6 mx-5 mt-5"
+          title={
+            query
+              ? `Search Results: ${data?.pages[0].total_results}`
+              : "Popular Movies"
+          }
+        >
           {data &&
             data.pages &&
             data.pages.map((page) =>
@@ -61,7 +69,7 @@ const HomePage = () => {
                 </Link>
               ))
             )}
-        </div>
+        </Grid>
       </div>
     </main>
   );
