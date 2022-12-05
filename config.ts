@@ -6,18 +6,20 @@ const API_KEY: string | undefined = process.env.API_KEY;
 
 const SEARCH_BASE_URL: string = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
 const POPULAR_BASE_URL: string = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
+const NOW_PLAYING_BASE_URL: string = `${API_URL}movie/now_playing?api_key=${API_KEY}&language=en-US`;
 // For single movie
 const movieUrl = (id?: string) => `${API_URL}movie/${id}?api_key=${API_KEY}`;
 const creditsUrl = (id?: string) =>
   `${API_URL}movie/${id}/credits?api_key=${API_KEY}`;
 
-const IMAGE_BASE_URL: string = "http://image.tmdb.org/t/p/";
+const IMAGE_BASE_URL: string = "https://image.tmdb.org/t/p/";
 // Sizes: w300, w780, w1280, original
 const BACKDROP_SIZE: string = "w1280";
 // w92, w154, w185, w342, w500, w780, original
 const POSTER_SIZE: string = "w780";
 
 export {
+  NOW_PLAYING_BASE_URL,
   SEARCH_BASE_URL,
   POPULAR_BASE_URL,
   API_URL,

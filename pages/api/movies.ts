@@ -1,7 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 // API URLs
-import { SEARCH_BASE_URL, POPULAR_BASE_URL } from "../../config";
+import {
+  SEARCH_BASE_URL,
+  POPULAR_BASE_URL,
+  NOW_PLAYING_BASE_URL,
+} from "../../config";
 // Basic fetchlay
 import { basicFetch } from "../../fetchers/fetchData";
 // Types

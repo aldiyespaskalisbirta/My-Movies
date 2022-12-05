@@ -7,12 +7,22 @@ type Props = {
   setQuery: React.Dispatch<React.SetStateAction<string>>;
 };
 
+const TIME = 300; // ms
+
 const SearchInput = ({ setQuery }: Props) => {
   const [text, setText] = React.useState("");
+  const timer = React.useRef<NodeJS.Timeout>();
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.currentTarget.value;
+
+    clearTimeout(timer.current);
+
     setText(value);
+
+    timer.current = setTimeout(() => {
+      setQuery(value);
+    }, TIME);
   };
 
   return (
@@ -24,7 +34,7 @@ const SearchInput = ({ setQuery }: Props) => {
         value={text}
         onChange={handleInput}
       />
-      <div className="absolute right-4 top-9">
+      <div className="absolute right-1 top-[1rem]">
         <SearchIcon />
       </div>
     </>
