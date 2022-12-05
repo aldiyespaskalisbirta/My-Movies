@@ -36,10 +36,11 @@ const HomePage = () => {
       {!query && data && data.pages ? (
         <Hero
           imgUrl={
-            data.pages[0].results[0].backdrop_path &&
-            IMAGE_BASE_URL +
-              BACKDROP_SIZE +
-              data.pages[0].results[0].backdrop_path
+            data.pages[0].results[0].backdrop_path
+              ? IMAGE_BASE_URL +
+                BACKDROP_SIZE +
+                data.pages[0].results[0].backdrop_path
+              : "/no-image.jpg"
           }
           title={data.pages[0].results[0].title}
           text={data.pages[0].results[0].overview}
@@ -61,8 +62,9 @@ const HomePage = () => {
                 <Link href={`/${movie.id}`} key={movie.id}>
                   <Card
                     imgUrl={
-                      movie.poster_path &&
-                      IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
+                      movie.poster_path
+                        ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
+                        : "/no-image.jpg"
                     }
                     title={movie.title}
                   />
