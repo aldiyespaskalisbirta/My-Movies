@@ -16,7 +16,10 @@ module.exports = {
           "2xl": "6rem",
         },
       },
+      minWidth: {
+        "1/2": "50%",
+      },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("tailwind-scrollbar-hide")],
 };

@@ -12,7 +12,7 @@ const Header = ({ setQuery }: Props) => (
     <div className="flex justify-between w-full h-full max-w-7xl m-auto px-4">
       <Link className="flex" href="/">
         <div className="flex items-center cursor-pointer">
-          <h1 className="brand font-bold text-4xl">MY MOVIES</h1>
+          <h1 className="brand font-bold md:text-4xl">MY MOVIES</h1>
         </div>
       </Link>
       {setQuery ? (

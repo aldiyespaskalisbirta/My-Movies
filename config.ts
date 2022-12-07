@@ -11,6 +11,7 @@ const NOW_PLAYING_BASE_URL: string = `${API_URL}movie/now_playing?api_key=${API_
 const movieUrl = (id?: string) => `${API_URL}movie/${id}?api_key=${API_KEY}`;
 const creditsUrl = (id?: string) =>
   `${API_URL}movie/${id}/credits?api_key=${API_KEY}`;
+const actorUrl = (id?: string) => `${API_URL}person/${id}?api_key=${API_KEY}`;
 
 const IMAGE_BASE_URL: string = "https://image.tmdb.org/t/p/";
 // Sizes: w300, w780, w1280, original
@@ -29,4 +30,5 @@ export {
   POSTER_SIZE,
   movieUrl,
   creditsUrl,
+  actorUrl,
 };

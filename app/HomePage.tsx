@@ -16,16 +16,16 @@ import Grid from "../components/server/Grid/Grid";
 const HomePage = () => {
   const [query, setQuery] = React.useState("");
 
-  const { data, fetchNextPage, error } = useFetchMovies(query);
+  const { data, fetchNextPage, error, isLoading, isFetching } =
+    useFetchMovies(query);
 
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
     const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
 
-    if (scrollHeight - scrollTop === clientHeight) fetchNextPage();
+    if (scrollHeight - (scrollTop + 300) <= clientHeight) fetchNextPage();
   };
 
   if (error) return <div>Oh noooooooo something went wrong!</div>;
-
   console.log(data);
   return (
     <main
@@ -46,9 +46,9 @@ const HomePage = () => {
           text={data.pages[0].results[0].overview}
         />
       ) : null}
-      <div className="container mb-10">
+      <div className="flex justify-center xl:container mb-10">
         <Grid
-          className="card grid grid-cols-4 gap-x-4 gap-y-6 mx-5 mt-5"
+          className="card grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 gap-y-6 mt-5 place-items-center"
           title={
             query
               ? `Search Results: ${data?.pages[0].total_results}`
@@ -59,7 +59,12 @@ const HomePage = () => {
             data.pages &&
             data.pages.map((page) =>
               page.results.map((movie) => (
-                <Link href={`/${movie.id}`} key={movie.id}>
+                <Link
+                  href={`movie/${movie.id}-${movie.title
+                    .replaceAll(" ", "-")
+                    .toLowerCase()}`}
+                  key={movie.id}
+                >
                   <Card
                     imgUrl={
                       movie.poster_path

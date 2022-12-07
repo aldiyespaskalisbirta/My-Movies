@@ -10,8 +10,11 @@ export type Movie = {
   vote_count: number;
   budget: number;
   runtime: number;
+  adult: boolean;
+  tagline: string;
   revenue: number;
   release_date: string;
+  genres: Genres[];
 };
 
 export type Movies = {
@@ -22,9 +25,21 @@ export type Movies = {
 };
 
 export type Cast = {
+  id: number;
   character: string;
   credit_id: string;
   name: string;
+  original_name: string;
+  profile_path: string;
+};
+
+export type Person = {
+  id: number;
+  brithday: string;
+  name: string;
+  gender: number;
+  biography: string;
+  popularity: number;
   profile_path: string;
 };
 
@@ -38,4 +53,9 @@ export type Credits = {
   id: number;
   cast: Cast[];
   crew: Crew[];
+};
+
+export type Genres = {
+  id: number;
+  name: string;
 };
