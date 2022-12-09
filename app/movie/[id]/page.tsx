@@ -29,7 +29,7 @@ const InformationMovie = async ({ params: { id } }: Props) => {
   const _movie = getMovieData(id);
   const _credits = getCredits(id);
   const movie = await _movie;
-
+  console.log(movie);
   return (
     <section className="md:h-screen grid place-items-center my-14">
       <div className="container flex flex-col gap-4">
@@ -50,8 +50,26 @@ const InformationMovie = async ({ params: { id } }: Props) => {
           rating={movie.vote_average}
           popularity={movie.popularity}
         />
-        {/* @ts-ignore */}
-        <Actors creditsPromise={_credits} />
+        <div className="grid grid-cols-4 space-x-5 mb-10">
+          <div className="col-span-3">
+            {/* @ts-ignore */}
+            <Actors creditsPromise={_credits} />
+          </div>
+          <div className="flex flex-col gap-4 py-3">
+            <div>
+              <h2 className="font-semibold text-xl">Status</h2>
+              <p>{movie.status}</p>
+            </div>
+            <div>
+              <h2 className="font-semibold text-xl">Budget</h2>
+              <p>${movie.budget}</p>
+            </div>
+            <div>
+              <h2 className="font-semibold text-xl">Income</h2>
+              <p>-</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

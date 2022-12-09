@@ -1,7 +1,9 @@
 export type Movie = {
   backdrop_path: string;
+  status: string;
   id: number;
   original_title: string;
+  original_language: string;
   overview: string;
   popularity: number;
   poster_path: string;
@@ -35,12 +37,13 @@ export type Cast = {
 
 export type Person = {
   id: number;
-  brithday: string;
+  birthday: string;
   name: string;
   gender: number;
   biography: string;
   popularity: number;
   profile_path: string;
+  place_of_birth: string;
 };
 
 export type Crew = {
